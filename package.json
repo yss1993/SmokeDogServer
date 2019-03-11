@@ -1,0 +1,15 @@
+{
+  "name": "smokedogserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "koa": "^2.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "yss",
+  "license": "ISC"
+}
