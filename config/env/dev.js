@@ -4,5 +4,5 @@
  */
 module.exports = {
     port: 8888,
-    mongoURI: 'mongo://127.0.0.1:27017/YANGOU'
+    mongoURL: 'mongodb://127.0.0.1:27017/YANGOU'
 };
