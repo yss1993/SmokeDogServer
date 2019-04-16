@@ -6,8 +6,6 @@ const app = new koa();
 const koaBody = require('koa-body');
 const router = require('./router/index');
 const config = require('./config/config').getInstance().config;
-//mongodb连接检测
-require('./lib/MongoDB')();
 
 app.use(koaBody({multipart: true}));
 
