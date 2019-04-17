@@ -7,9 +7,8 @@ const config = require('../config/config').getInstance().config;
 
 class BaseModel {
     constructor() {
-        let db = config.db.yangou;
-        let mysqlOption = config[db];
-        this.sequelize = new Sequelize(mysqlOption);
+        this.mysqlOptions = config.mysql;
+        this.sequelize = new Sequelize(this.mysqlOptions);
     }
 }
 

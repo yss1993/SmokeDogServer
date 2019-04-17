@@ -12,7 +12,7 @@ router.get('/api/login', async ctx => {
 
 //注册
 router.post('/api/register', async ctx => {
-    await new UserController(ctx).userRegister()
+    await new UserController(ctx).userRegister();
 });
 
 module.exports = router;
