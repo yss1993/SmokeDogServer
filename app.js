@@ -7,6 +7,7 @@ const koaBody = require('koa-body');
 const router = require('./router/index');
 const config = require('./config/config').getInstance().config;
 
+require('./lib/HealthCheck').getCheckInstance().checkMysqlConnection();
 app.use(koaBody({multipart: true}));
 
 //路由层

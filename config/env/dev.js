@@ -4,5 +4,12 @@
  */
 module.exports = {
     port: 8888,
-    mongoURL: 'mongodb://127.0.0.1:27017/YANGOU'
+    mysql: {
+        host: '127.0.0.1',
+        port: 3306,
+        username: 'root',
+        password: '123456',
+        database: 'yangou',
+        dialect: 'mysql'
+    }
 };
