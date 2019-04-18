@@ -3,12 +3,11 @@
  * Created by yu_ss on 2019-04-17 17:01
  */
 const Sequelize = require('sequelize');
-const config = require('../config/config').getInstance().config;
+const Model = Sequelize.Model;
 
-class BaseModel {
+class BaseModel extends Model{
     constructor() {
-        this.mysqlOptions = config.mysql;
-        this.sequelize = new Sequelize(this.mysqlOptions);
+        super();
     }
 }
 

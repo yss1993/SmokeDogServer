@@ -10,6 +10,7 @@ module.exports = {
         username: 'root',
         password: '123456',
         database: 'yangou',
-        dialect: 'mysql'
+        dialect: 'mysql',
+        define: { freezeTableName: true, raw: true}
     }
 };

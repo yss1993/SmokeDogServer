@@ -3,6 +3,7 @@
  * Created by yu_ss on 2019-03-12 14:42
  */
 const BaseService = require('./BaseService');
+const UserModel = require('../model/UserModel');
 
 class UserService extends BaseService {
     /**
@@ -11,6 +12,7 @@ class UserService extends BaseService {
      */
     constructor(ctx) {
         super(ctx);
+        this.userModel = new UserModel();
     }
 
     /**
@@ -30,6 +32,7 @@ class UserService extends BaseService {
     async userLogin(params) {
         console.log(params);
     }
+
 }
 
 module.exports = UserService;
