@@ -21,7 +21,8 @@ class UserService extends BaseService {
      * @returns {Promise.<void>}
      */
     async userRegister(params) {
-        console.log(params);
+        let addNewUserRes = await this.userModel.addNewUser(params);
+        console.log(addNewUserRes);
     }
 
     /**
@@ -30,7 +31,8 @@ class UserService extends BaseService {
      * @returns {Promise.<void>}
      */
     async userLogin(params) {
-        console.log(params);
+        let dataData = await this.userModel.getAllUser();
+        console.log(dataData);
     }
 
 }
