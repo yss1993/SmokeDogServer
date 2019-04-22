@@ -11,8 +11,10 @@ module.exports = {
         password: '123456',
         database: 'yangou',
         dialect: 'mysql',
+        raw: true,
+        timezone: 'Asia/Shanghai',
         define: {
-            freezeTableName: true
+            freezeTableName: true,
         }
     }
 };

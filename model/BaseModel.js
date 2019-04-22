@@ -5,10 +5,6 @@
 const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
-class BaseModel extends Model{
-    constructor() {
-        super();
-    }
-}
+class BaseModel extends Model{}
 
 module.exports = BaseModel;

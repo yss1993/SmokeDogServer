@@ -3,13 +3,10 @@
  * Created by yu_ss on 2019-04-18 14:52
  */
 const Sequelize = require('sequelize');
-const BaseModel = require('./BaseModel');
+const Model = Sequelize.Model;
 const sequelize = require('../lib/HealthCheck').getCheckInstance().getMysqlConnection();
-
+const BaseModel = require('../model/BaseModel');
 class UserModel extends BaseModel {
-    constructor() {
-        super();
-    }
 
     async getAllUser() {
         let userData = await UserModel.findAll();
@@ -19,7 +16,9 @@ class UserModel extends BaseModel {
     async addNewUser(params) {
         let addRuesult = await UserModel.findOrCreate({
             where: {username: params.username},
-            defaults: {password: params.password, nickname: params.nickname, region: params.region, status: 11}
+            attributes: ['username'],
+            defaults: {password: params.password, nickname: params.nickname, region: params.region, status: 11},
+            raw: true
         });
 
         return addRuesult;

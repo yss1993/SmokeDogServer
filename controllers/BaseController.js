@@ -12,12 +12,13 @@ class BaseController {
 
     /**
      * 成功返回
+     * @param msg
      * @param data
      */
-    returnSuccess(data) {
+    returnSuccess(msg, data) {
         let successObj = {
             code: 200,
-            msg: '',
+            msg,
             data
         };
         this._ctx.body = successObj;
@@ -32,7 +33,7 @@ class BaseController {
         let errorObj = {
             code,
             msg: errorMsg,
-            data: ''
+            data: []
         };
         this._ctx.body = errorObj;
     }

@@ -17,7 +17,12 @@ class UserController extends BaseConstrller {
      */
     async userRegister() {
        let params = this._ctx.request.body;
-       await this.userService.userRegister(params);
+       let addNewUser = await this.userService.userRegister(params);
+        if (addNewUser[1]) {
+            this.returnSuccess('用户注册成功', []);
+        } else {
+            this.returnError(202, '该用户已存在');
+        }
     }
 
     /**
@@ -25,7 +30,7 @@ class UserController extends BaseConstrller {
      * @returns {Promise.<void>}
      */
     async userLogin() {
-        let params = this._ctx.request.query;
+        let params = this._ctx.request.body;
         await this.userService.userLogin(params);
     }
 }

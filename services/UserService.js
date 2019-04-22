@@ -12,6 +12,7 @@ class UserService extends BaseService {
      */
     constructor(ctx) {
         super(ctx);
+        this._ctx = ctx;
         this.userModel = new UserModel();
     }
 
@@ -22,7 +23,7 @@ class UserService extends BaseService {
      */
     async userRegister(params) {
         let addNewUserRes = await this.userModel.addNewUser(params);
-        console.log(addNewUserRes);
+        return addNewUserRes;
     }
 
     /**
@@ -31,10 +32,15 @@ class UserService extends BaseService {
      * @returns {Promise.<void>}
      */
     async userLogin(params) {
-        let dataData = await this.userModel.getAllUser();
-        console.log(dataData);
+        // let dataData = await this.userModel.getAllUser();
+        // console.log(dataData);
+        let arr = [1, 5, 9, 52, 22];
+        let target = arr.every((item) => {
+            console.log(item);
+            return item >= 1;
+        });
+        console.log(target);
     }
-
 }
 
 module.exports = UserService;
