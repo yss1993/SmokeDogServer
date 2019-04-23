@@ -22,6 +22,8 @@ class UserService extends BaseService {
      * @returns {Promise.<void>}
      */
     async userRegister(params) {
+        let sha256TypeHash = this.createHash('SHA256');
+        params.password = sha256TypeHash(params.password);
         let addNewUserRes = await this.userModel.addNewUser(params);
         return addNewUserRes;
     }
@@ -32,14 +34,18 @@ class UserService extends BaseService {
      * @returns {Promise.<void>}
      */
     async userLogin(params) {
-        // let dataData = await this.userModel.getAllUser();
-        // console.log(dataData);
-        let arr = [1, 5, 9, 52, 22];
-        let target = arr.every((item) => {
-            console.log(item);
-            return item >= 1;
-        });
-        console.log(target);
+        let userData = await this.userModel.getSpecifyUser(params);
+        //用户不存在
+        if (!userData) {
+            return false;
+        }
+        //密码比对
+        let sha256TypeHash = this.createHash('SHA256');
+        if (sha256TypeHash(params.password) === userData.password) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

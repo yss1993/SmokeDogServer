@@ -12,7 +12,7 @@ class UserController extends BaseConstrller {
     }
 
     /**
-     * 用户注册
+     * 用户注册控制层
      * @returns {Promise.<void>}
      */
     async userRegister() {
@@ -26,12 +26,17 @@ class UserController extends BaseConstrller {
     }
 
     /**
-     * 用户登录
+     * 用户登录控制层
      * @returns {Promise.<void>}
      */
     async userLogin() {
-        let params = this._ctx.request.body;
-        await this.userService.userLogin(params);
+        let params = this._ctx.request.query;
+        let loginRes = await this.userService.userLogin(params);
+        if (loginRes) {
+            this.returnSuccess('登录成功', []);
+        } else {
+            this.returnError(401, '账号或者密码不正确');
+        }
     }
 }
 

@@ -3,16 +3,15 @@
  * Created by yu_ss on 2019-04-18 14:52
  */
 const Sequelize = require('sequelize');
-const Model = Sequelize.Model;
 const sequelize = require('../lib/HealthCheck').getCheckInstance().getMysqlConnection();
 const BaseModel = require('../model/BaseModel');
+
 class UserModel extends BaseModel {
-
-    async getAllUser() {
-        let userData = await UserModel.findAll();
-        return userData;
-    }
-
+    /**
+     * 创建新的用户（包括用户名重复验证）
+     * @param params
+     * @returns {Promise.<Model>}
+     */
     async addNewUser(params) {
         let addRuesult = await UserModel.findOrCreate({
             where: {username: params.username},
@@ -22,6 +21,21 @@ class UserModel extends BaseModel {
         });
 
         return addRuesult;
+    }
+
+    /**
+     * 通过用户名查找用户
+     * @param params
+     * @returns {Promise.<Model>}
+     */
+    async getSpecifyUser(params) {
+        let userData = await UserModel.findOne({
+            where: {username: params.username},
+            attributes: ['password'],
+            raw: true
+        });
+
+        return userData;
     }
 }
 
