@@ -24,8 +24,7 @@ class UserService extends BaseService {
     async userRegister(params) {
         let sha256TypeHash = this.createHash('SHA256');
         params.password = sha256TypeHash(params.password);
-        let addNewUserRes = await this.userModel.addNewUser(params);
-        return addNewUserRes;
+        return await this.userModel.addNewUser(params);
     }
 
     /**
